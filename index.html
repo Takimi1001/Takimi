@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Вместе Рядом — Бронирование мест отдыха для всей семьи</title>
+</head>
+<body class="page">
+    <header class="header">
+        <div class="header__container">
+            <a href="#" class="header__logo-link">
+                <img src="images/logo.svg" alt="Логотип Вместе Рядом" class="header__logo-img">
+            </a>
+
+            <div class="header__controls">
+                <button id="themeToggle" class="button" aria-pressed="false" title="Переключить тему">Тема</button>
+            </div>
+
+            <nav class="header__nav" aria-label="Главная навигация">
+                <ul class="nav__list">
+                    <li class="nav__item"><a class="nav__link nav__link--active" href="#about">Главная</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#catalog">Услуги</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#help">Помощь</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <h1 class="main__title">Бронирование доступных мест для любого возраста</h1>
+
+        <section class="search-form" aria-label="Форма подбора мест">
+            <div class="search-form__container">
+                <label class="sr-only" for="date">Дата</label>
+                <input id="date" class="search-form__input" type="date" />
+
+                <label class="sr-only" for="age">Возраст</label>
+                <input id="age" class="search-form__input" type="number" min="0" placeholder="Возраст (например, 5)" />
+
+                <button id="searchBtn" class="button button--primary">Найти</button>
+            </div>
+            <div class="filters__container">
+                <label for="typeFilter">Тип</label>
+                <select id="typeFilter" class="search-form__input">
+                    <option value="all">Все</option>
+                    <option value="family">Семейное</option>
+                    <option value="adult">Взрослым</option>
+                </select>
+
+                <label for="minPrice">Мин. цена (₸)</label>
+                <input id="minPrice" class="search-form__input" type="number" min="0" placeholder="0">
+
+                <label for="maxPrice">Макс. цена (₸)</label>
+                <input id="maxPrice" class="search-form__input" type="number" min="0" placeholder="20000">
+
+                <button id="applyFiltersBtn" class="button">Применить фильтры</button>
+                <button id="clearFiltersBtn" class="button">Сбросить</button>
+            </div>
+        </section>
+
+        <section id="catalog" class="catalog" aria-label="Доступные локации и коворкинги">
+            <div class="catalog__container">
+                <h2 class="catalog__title">Популярные места для отдыха</h2>
+                <ul class="catalog__grid" id="catalogGrid"></ul>
+            </div>
+        </section>
+
+        <section class="booking" aria-label="Бронирование места">
+            <div class="booking__container">
+                <h2 class="booking__title">Бронирование места</h2>
+                <div class="booking__card">
+                    <div class="booking__info">
+                        <p class="booking__label">Выбранное место</p>
+                        <p id="selectedPlace" class="booking__place">Выберите место в каталоге</p>
+                    </div>
+
+                    <label class="booking__field" for="hoursSelect">
+                        <span class="booking__field-title">Количество часов</span>
+                        <select id="hoursSelect" class="booking__select">
+                            <option value="1">1 час</option>
+                            <option value="2">2 часа</option>
+                            <option value="3">3 часа</option>
+                            <option value="4">4 часа</option>
+                            <option value="5">5 часов</option>
+                            <option value="6">6 часов</option>
+                            <option value="7">7 часов</option>
+                            <option value="8">8 часов</option>
+                        </select>
+                    </label>
+
+                    <div class="booking__summary">
+                        <span>Стоимость за час</span>
+                        <strong id="pricePerHour">—</strong>
+                    </div>
+                    <div class="booking__summary booking__summary--total">
+                        <span>Итого</span>
+                        <strong id="totalPrice">0 ₸</strong>
+                    </div>
+
+                    <button id="confirmBooking" class="button button--primary" disabled>Подтвердить бронь</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" aria-label="Форма обратной связи">
+            <div class="contact__container">
+                <h2 class="contact__title">Свяжитесь с нами</h2>
+                <form id="contact-form-element" class="contact-form">
+                    <label class="contact-form__field" for="contactName">
+                        <span class="contact-form__label">Имя</span>
+                        <input id="contactName" name="name" type="text" placeholder="Введите ваше имя" required>
+                    </label>
+
+                    <label class="contact-form__field" for="contactPhone">
+                        <span class="contact-form__label">Номер телефона</span>
+                        <input id="contactPhone" name="phone" type="tel" placeholder="+7 (999) 999-99-99" required>
+                    </label>
+
+                    <label class="contact-form__field" for="contactMessage">
+                        <span class="contact-form__label">Сообщение</span>
+                        <textarea id="contactMessage" name="message" rows="5" placeholder="Напишите, как мы можем помочь" required></textarea>
+                    </label>
+
+                    <button type="submit" class="button button--primary">Отправить</button>
+                    <p id="form-status" class="form-status" role="status" aria-live="polite">Заполните форму, и мы свяжемся с вами.</p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="footer__copyright">&copy; 2026 Вместе Рядом. Сервис бронирования 0+.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

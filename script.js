@@ -59,7 +59,7 @@ function createCard(product) {
     const li = document.createElement('li');
     li.className = 'card fade-in';
 
-    const imgSrc = product.image && product.image.startsWith('./') ? product.image : `./${product.image}`;
+    const imgSrc = product.image && (product.image.startsWith('./') || product.image.startsWith('/')) ? product.image : `./${product.image}`;
 
     li.innerHTML = `
         <div class="card__media">
